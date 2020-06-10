@@ -40,7 +40,7 @@ export default {
     async save() {
       let sss = Qs.stringify(this.model)
       await this.$http.post('seller/QRcode/create', sss)
-      this.$router.push('/articles/list')
+      await this.$router.push('/articles/list')
       this.$message({
         type: 'success',
         message: '保存成功'

@@ -2,15 +2,15 @@
   <div class="list">
     <h1>分类列表</h1>
     <el-table :data="items">
-      <el-table-column prop="_id" label="ID" width="250"></el-table-column>
-      <el-table-column prop="parent.name" label="上级分类"></el-table-column>
-      <el-table-column prop="name" label="分类名称"></el-table-column>
+<!--      <el-table-column prop="categoryId" label="ID" width="250"></el-table-column>-->
+      <el-table-column prop="categoryType" label="类别编号"></el-table-column>
+      <el-table-column prop="categoryName" label="类别名称"></el-table-column>
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
           <el-button
             type="text"
             size="small"
-            @click="$router.push(`/categories/edit/${scope.row._id}`)"
+            @click="$router.push(`/categories/edit/${scope.row.categoryType}`)"
           >编辑</el-button>
         </template>
       </el-table-column>
@@ -34,8 +34,8 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get('rest/categories')
-      this.items = res.data
+      const res = await this.$http.get('seller/category/list')
+      this.items = res.data.data.categoryList
     },
     async remove(row) {
       this.$confirm(`将永久删除 ${row.name} 分类, 是否继续?`, '提示', {

@@ -1,10 +1,10 @@
 <template>
   <div class="list">
-    <h1>物品列表</h1>
+    <h1>菜品列表</h1>
     <el-table :data="items">
-      <el-table-column prop="productName" label="食品价格" width="250"></el-table-column>
-      <el-table-column prop="productPrice" label="食品价格"></el-table-column>
-      <el-table-column prop="productDescription" label="食品描述"></el-table-column>
+      <el-table-column prop="productName" label="菜品名称" width="250"></el-table-column>
+      <el-table-column prop="productPrice" label="菜品价格"></el-table-column>
+      <el-table-column prop="productDescription" label="菜品描述"></el-table-column>
       <el-table-column  label="图标" style="height:1rem;">
         <template slot-scope="scope">
           <img :src="scope.row.productIcon"  width="40" height="40" alt="图标" />

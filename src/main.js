@@ -6,7 +6,8 @@ import router from './router'
 import './style.css'
 
 Vue.config.productionTip = false
-Vue.prototype.baseURI = `http://192.168.43.254:8080/`
+Vue.prototype.baseURI = `http://localhost:8080/`
+//Vue.prototype.baseURI = `http://192.168.43.254:8080/`
 import http from './plugins/http' //封装axios
 Vue.prototype.$http = http //挂载
 

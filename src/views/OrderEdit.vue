@@ -2,19 +2,19 @@
   <div class="ItemEdit">
     <h1>{{id?'编辑':'新建'}}订单</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
-      <el-form-item label="用户名">
+      <el-form-item label="就餐方式">
         <el-input v-model="model.buyerName"></el-input>
       </el-form-item>
-      <el-form-item label="手机号">
+      <el-form-item label="附加">
         <el-input v-model="model.buyerPhone"></el-input>
       </el-form-item>
-      <el-form-item label="地址">
+      <el-form-item label="座位号">
         <el-input v-model="model.buyerAddress"></el-input>
       </el-form-item>
-      <el-form-item label="订单号">
+      <el-form-item label="取餐码">
         <el-input v-model="model.mealCode"></el-input>
       </el-form-item>
-      <el-form-item label="订单数">
+      <el-form-item label="订单金额">
         <el-input v-model="model.orderAmount"></el-input>
       </el-form-item>
       <el-form-item label="订单状态">

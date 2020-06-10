@@ -3,7 +3,10 @@
     <h1>{{id?'编辑':'新建'}}物品</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="类别编号">
-        <el-input v-model="model.categoryType"></el-input>
+<!--        <el-input v-model="model.categoryType"></el-input>-->
+        <el-select v-model="model.categoryType" placeholder="请选择">
+          <el-option v-for="item in parents" :key="item.categoryType" :label="item.categoryName" :value="item.categoryType"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="描述">
         <el-input v-model="model.productDescription"></el-input>
@@ -48,9 +51,11 @@ export default {
     return {
       model: {
       },
+      parents: []
     }
   },
   created() {
+    this.parentfetch()
     this.id && this.fetch()//有id就拉取数据进行编辑
   },
 
@@ -72,6 +77,10 @@ export default {
     async fetch() {
       const res = await this.$http.get(`seller/product/show?productId=${this.id}`)
       this.model = res.data.data
+    },
+    async parentfetch() {
+      const res = await this.$http.get(`seller/category/list`)
+      this.parents = res.data.data.categoryList
     },
   },
 

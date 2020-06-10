@@ -3,7 +3,8 @@ import Vue from 'vue'
 import router from '../router'
 
 const http = axios.create({
-  baseURL: 'http://192.168.43.254:8080/',
+  //baseURL: 'http://192.168.43.254:8080/',
+  baseURL: 'http://localhost:8080/',
 })
 
 //拦截响应，根据message来提示用户错误的原因

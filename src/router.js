@@ -5,11 +5,11 @@ import CategoryEdit from './views/CategoryEdit.vue'
 import CategoryList from './views/CategoryList.vue'
 import ItemEdit from './views/ItemEdit.vue'
 import ItemList from './views/ItemList.vue'
-import HeroEdit from './views/HeroEdit.vue'
-import HeroList from './views/HeroList.vue'
-import ArticleEdit from './views/ArticleEdit.vue'
-import ArticleEdit1 from './views/ArticleEdit1.vue'
-import ArticleList from './views/ArticleList.vue'
+import HeroEdit from './views/OrderEdit.vue'
+import HeroList from './views/OrderList.vue'
+import ArticleEdit from './views/QRCodeEdit.vue'
+import ArticleEdit1 from './views/QRCodeEditLogo.vue'
+import ArticleList from './views/QRCodeList.vue'
 import AdEdit from './views/AdEdit.vue'
 import AdList from './views/AdList.vue'
 import AdminUserEdit from './views/AdminUserEdit.vue'
@@ -36,13 +36,16 @@ const router = new Router({
     {
       path: '/cook',
       name: 'cook',
-      component: Cook,
+      component: Cook, meta: {
+        isChange: false,
+        keepAlive: true // 需要被缓存
+      }
     },
     {
-      path: '/cookEdit/:id',
-      name: 'cookEdit',
-      component: CookEdit,
-      props: true
+        path: '/cookEdit/:id',
+        name: 'cookEdit',
+        component: CookEdit,
+        props: true
     },
     {
       path: '/',

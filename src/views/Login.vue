@@ -46,8 +46,8 @@ export default {
           })
         }else{
           this.$message({
-            type: 'success',
-            message: '登录成功，欢迎您'
+            type: 'error',
+            message: '登陆失败，'+res.data.message
           })
         }
       })

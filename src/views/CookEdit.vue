@@ -32,18 +32,37 @@ export default {
   },
   data() {
     return {
+      isChange: false,
+      orderDetail: [],
       items: []
     }
+  },
+  beforeRouteLeave (to, from, next) {
+    if (this.isChange) {
+      console.log(this.orderDetail)
+      window.sessionStorage.setItem('changeData', JSON.stringify(this.orderDetail))
+    }
+    to.meta.isChange = this.isChange
+    next()
   },
   methods: {
     back(){
       this.$router.go(-1)
     },
     async finish(){
-      await this.$http.post(`seller/order/finish?orderId=${this.id}`)
+      await this.$http.post(`seller/order/finish?orderId=${this.id}`).then(res=>{
+        if(res.data.code == 0){
+          this.isChange = true
+          this.orderDetail.orderStatus = 1
+          this.back()
+        }else{
+          alert(res.data.msg)
+        }
+      })
     },
     async fetch() {
       const res = await this.$http.get(`seller/order/detail?orderId=${this.id}`)
+      this.orderDetail = res.data.data
       this.items = res.data.data.orderDetailList
     },
     async remove(row) {

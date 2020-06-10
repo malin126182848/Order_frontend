@@ -10,6 +10,8 @@
           <el-menu-item-group>
             <el-menu-item index="/items/create">新建菜品</el-menu-item>
             <el-menu-item index="/items/list">菜品列表</el-menu-item>
+            <el-menu-item index="/categories/create">新建类别</el-menu-item>
+            <el-menu-item index="/categories/list">类别列表</el-menu-item>
           </el-menu-item-group>
           
           
